@@ -103,13 +103,15 @@ textarea {
 }
 
 .site-nav a:hover,
-.site-nav a:focus-visible {
+.site-nav a:focus-visible,
+.site-nav a.active {
   background: #eef2f8;
   color: var(--ink);
   outline: none;
 }
 
-.site-nav .nav-cta {
+.site-nav .nav-cta,
+.site-nav .nav-cta.active {
   background: var(--ink);
   color: var(--white);
 }
@@ -170,6 +172,14 @@ h1 {
   line-height: 0.88;
   letter-spacing: 0;
   font-weight: 900;
+}
+
+.page-title {
+  max-width: 900px;
+  font-family: var(--main-font);
+  font-size: clamp(2.5rem, 5.8vw, 5.6rem);
+  line-height: 1;
+  font-weight: 700;
 }
 
 h2 {
@@ -326,6 +336,10 @@ p {
   padding: clamp(60px, 8vw, 108px) 6vw;
 }
 
+.page-hero {
+  padding: clamp(58px, 8vw, 112px) 6vw;
+}
+
 .section-inner,
 .section-heading,
 .signup-layout {
@@ -391,6 +405,50 @@ p {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
+}
+
+.page-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.page-card {
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(20, 21, 26, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.page-card:hover,
+.page-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: #b7dfff;
+  box-shadow: 0 18px 38px rgba(20, 21, 26, 0.12);
+  outline: none;
+}
+
+.page-card span {
+  width: fit-content;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #eef6ff;
+  color: #11679d;
+  font-weight: 900;
+}
+
+.page-card p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .step-card,
@@ -691,6 +749,10 @@ pre {
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .page-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -732,7 +794,8 @@ pre {
   .hero-stats,
   .steps,
   .rewards-grid,
-  .idea-tool {
+  .idea-tool,
+  .page-grid {
     grid-template-columns: 1fr;
   }
 

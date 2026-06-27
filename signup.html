@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | Roblox Build Day</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Roblox Build Day home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Build Day</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="what.html">What</a>
+        <a href="how.html">How</a>
+        <a href="lua.html">Lua</a>
+        <a href="rewards.html">Rewards</a>
+        <a class="nav-cta active" href="signup.html">Sign Up</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section band red" aria-labelledby="signup-title">
+        <div class="signup-layout">
+          <div>
+            <p class="eyebrow">Sign up</p>
+            <h1 class="page-title" id="signup-title">Save your Build Day spot.</h1>
+            <p>
+              Join live workshops, complete creator missions, and meet other players learning to
+              build their own Roblox experiences.
+            </p>
+          </div>
+
+          <form class="signup-form" id="signupForm" novalidate>
+            <label>
+              Builder name
+              <input id="builderName" name="builderName" type="text" placeholder="PixelBuilder42" required />
+            </label>
+            <label>
+              Skill level
+              <select id="skillLevel" name="skillLevel" required>
+                <option value="">Choose one</option>
+                <option>New to Roblox Studio</option>
+                <option>I have built before</option>
+                <option>I know some Lua</option>
+              </select>
+            </label>
+            <label>
+              Game idea
+              <textarea id="gameIdea" name="gameIdea" rows="4" placeholder="I want to build..." required></textarea>
+            </label>
+            <button class="button primary" type="submit">Join Build Day</button>
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Roblox Build Day is a concept promotional event site for learning Roblox Studio and Lua.</p>
+      <a href="index.html">Back home</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

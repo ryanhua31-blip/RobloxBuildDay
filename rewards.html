@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rewards | Roblox Build Day</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Roblox Build Day home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Build Day</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="what.html">What</a>
+        <a href="how.html">How</a>
+        <a href="lua.html">Lua</a>
+        <a class="active" href="rewards.html">Rewards</a>
+        <a class="nav-cta" href="signup.html">Sign Up</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="rewards-title">
+        <div class="section-heading">
+          <p class="eyebrow">Why join?</p>
+          <h1 class="page-title" id="rewards-title">Playing is fun. Creating can pay off.</h1>
+        </div>
+
+        <div class="rewards-grid">
+          <article>
+            <h3>Earn creator skills</h3>
+            <p>Learn the basics of building, scripting, testing, and improving a Roblox game.</p>
+          </article>
+          <article>
+            <h3>Make something real</h3>
+            <p>Walk away with a playable prototype you can keep editing after the event.</p>
+          </article>
+          <article>
+            <h3>Robux motivation</h3>
+            <p>Discover how strong games, updates, and player feedback can support earning goals.</p>
+          </article>
+        </div>
+
+        <div class="idea-tool" aria-labelledby="idea-title">
+          <div>
+            <p class="eyebrow">Need an idea?</p>
+            <h3 id="idea-title">Generate a starter game concept.</h3>
+          </div>
+          <button class="button secondary" id="ideaButton" type="button">New Idea</button>
+          <p id="ideaOutput">A lava obby where every checkpoint unlocks a new speed boost.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Roblox Build Day is a concept promotional event site for learning Roblox Studio and Lua.</p>
+      <a href="signup.html">Next: Sign up</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

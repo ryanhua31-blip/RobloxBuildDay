@@ -7,7 +7,7 @@ const ideaOutput = document.querySelector("#ideaOutput");
 const signupForm = document.querySelector("#signupForm");
 const formMessage = document.querySelector("#formMessage");
 const canvas = document.querySelector("#buildCanvas");
-const context = canvas.getContext("2d");
+const context = canvas ? canvas.getContext("2d") : null;
 
 const ideas = [
   "A sky-island obby where players unlock cloud bridges with Lua-powered buttons.",
@@ -18,17 +18,19 @@ const ideas = [
   "A boss battle arena where each round teaches a new movement or weapon mechanic."
 ];
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = siteNav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
+if (menuToggle && siteNav) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = siteNav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-siteNav.addEventListener("click", (event) => {
-  if (event.target.matches("a")) {
-    siteNav.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
-});
+  siteNav.addEventListener("click", (event) => {
+    if (event.target.matches("a")) {
+      siteNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
 
 quizButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -36,44 +38,48 @@ quizButtons.forEach((button) => {
       option.classList.remove("correct", "wrong");
     });
 
-    if (button.dataset.answer === "correct") {
+    if (button.dataset.answer === "correct" && quizResult) {
       button.classList.add("correct");
       quizResult.textContent = "Correct. Lua uses local to create a variable.";
-    } else {
+    } else if (quizResult) {
       button.classList.add("wrong");
       quizResult.textContent = "Not quite. Try local.";
     }
   });
 });
 
-ideaButton.addEventListener("click", () => {
-  const currentIdea = ideaOutput.textContent;
-  let nextIdea = ideas[Math.floor(Math.random() * ideas.length)];
+if (ideaButton && ideaOutput) {
+  ideaButton.addEventListener("click", () => {
+    const currentIdea = ideaOutput.textContent;
+    let nextIdea = ideas[Math.floor(Math.random() * ideas.length)];
 
-  while (nextIdea === currentIdea) {
-    nextIdea = ideas[Math.floor(Math.random() * ideas.length)];
-  }
+    while (nextIdea === currentIdea) {
+      nextIdea = ideas[Math.floor(Math.random() * ideas.length)];
+    }
 
-  ideaOutput.textContent = nextIdea;
-});
+    ideaOutput.textContent = nextIdea;
+  });
+}
 
-signupForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (signupForm && formMessage) {
+  signupForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const builderName = document.querySelector("#builderName").value.trim();
-  const skillLevel = document.querySelector("#skillLevel").value;
-  const gameIdea = document.querySelector("#gameIdea").value.trim();
+    const builderName = document.querySelector("#builderName").value.trim();
+    const skillLevel = document.querySelector("#skillLevel").value;
+    const gameIdea = document.querySelector("#gameIdea").value.trim();
 
-  if (!builderName || !skillLevel || !gameIdea) {
-    formMessage.classList.remove("success");
-    formMessage.textContent = "Fill in each box to join Build Day.";
-    return;
-  }
+    if (!builderName || !skillLevel || !gameIdea) {
+      formMessage.classList.remove("success");
+      formMessage.textContent = "Fill in each box to join Build Day.";
+      return;
+    }
 
-  formMessage.classList.add("success");
-  formMessage.textContent = `${builderName}, your Build Day spot is saved. Start sketching that game.`;
-  signupForm.reset();
-});
+    formMessage.classList.add("success");
+    formMessage.textContent = `${builderName}, your Build Day spot is saved. Start sketching that game.`;
+    signupForm.reset();
+  });
+}
 
 function resizeCanvas() {
   const rect = canvas.getBoundingClientRect();
@@ -187,6 +193,8 @@ function animateScene(time) {
   requestAnimationFrame(animateScene);
 }
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-requestAnimationFrame(animateScene);
+if (canvas && context) {
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+  requestAnimationFrame(animateScene);
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Lua | Roblox Build Day</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Roblox Build Day home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Build Day</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="what.html">What</a>
+        <a href="how.html">How</a>
+        <a class="active" href="lua.html">Lua</a>
+        <a href="rewards.html">Rewards</a>
+        <a class="nav-cta" href="signup.html">Sign Up</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section band dark" aria-labelledby="lua-title">
+        <div class="section-heading">
+          <p class="eyebrow">Learn Lua</p>
+          <h1 class="page-title" id="lua-title">Code that makes your game react.</h1>
+        </div>
+
+        <div class="lua-lab">
+          <div class="code-window" aria-label="Example Lua code">
+            <div class="window-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <pre><code>local coins = 0
+
+script.Parent.Touched:Connect(function(player)
+  coins = coins + 10
+  print("You earned Robux energy!")
+end)</code></pre>
+          </div>
+
+          <div class="quiz-panel">
+            <h3>Quick Lua Check</h3>
+            <p id="quizQuestion">Which word creates a variable in Lua?</p>
+            <div class="quiz-options" role="group" aria-labelledby="quizQuestion">
+              <button type="button" data-answer="wrong">make</button>
+              <button type="button" data-answer="correct">local</button>
+              <button type="button" data-answer="wrong">spawn</button>
+            </div>
+            <p class="quiz-result" id="quizResult" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Roblox Build Day is a concept promotional event site for learning Roblox Studio and Lua.</p>
+      <a href="rewards.html">Next: Rewards</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
