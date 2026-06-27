@@ -1,6 +1,8 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 const quizButtons = document.querySelectorAll(".quiz-options button");
+const quizQuestion = document.querySelector("#quizQuestion");
+const quizProgress = document.querySelector("#quizProgress");
 const quizResult = document.querySelector("#quizResult");
 const ideaButton = document.querySelector("#ideaButton");
 const ideaOutput = document.querySelector("#ideaOutput");
@@ -18,6 +20,32 @@ const ideas = [
   "A boss battle arena where each round teaches a new movement or weapon mechanic."
 ];
 
+const luaQuestions = [
+  {
+    question: "Which word creates a variable in Lua?",
+    options: ["make", "local", "spawn"],
+    answer: "local",
+    success: "Correct. Lua uses local to create a variable.",
+    hint: "Not quite. Try local."
+  },
+  {
+    question: "Which symbol means add in Lua?",
+    options: ["+", "=", ":"],
+    answer: "+",
+    success: "Correct. The + symbol adds numbers together.",
+    hint: "Not quite. Look for the symbol that adds numbers."
+  },
+  {
+    question: "Which command prints a message in the Output window?",
+    options: ["say()", "print()", "show()"],
+    answer: "print()",
+    success: "Correct. print() sends a message to Output.",
+    hint: "Not quite. Lua uses print() for Output messages."
+  }
+];
+
+let currentQuizIndex = 0;
+
 if (menuToggle && siteNav) {
   menuToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("open");
@@ -32,21 +60,78 @@ if (menuToggle && siteNav) {
   });
 }
 
-quizButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    quizButtons.forEach((option) => {
-      option.classList.remove("correct", "wrong");
-    });
+function renderQuizQuestion() {
+  if (!quizQuestion || !quizProgress || quizButtons.length === 0) {
+    return;
+  }
 
-    if (button.dataset.answer === "correct" && quizResult) {
-      button.classList.add("correct");
-      quizResult.textContent = "Correct. Lua uses local to create a variable.";
-    } else if (quizResult) {
-      button.classList.add("wrong");
-      quizResult.textContent = "Not quite. Try local.";
-    }
+  const quiz = luaQuestions[currentQuizIndex];
+  quizQuestion.textContent = quiz.question;
+  quizProgress.textContent = `${currentQuizIndex + 1}/${luaQuestions.length}`;
+
+  quizButtons.forEach((button, index) => {
+    button.textContent = quiz.options[index];
+    button.disabled = false;
+    button.classList.remove("correct", "wrong");
   });
-});
+
+  if (quizResult) {
+    quizResult.textContent = "";
+    quizResult.classList.remove("success");
+  }
+}
+
+function finishQuiz() {
+  if (!quizQuestion || !quizProgress || !quizResult) {
+    return;
+  }
+
+  quizQuestion.textContent = "You finished the Lua check.";
+  quizProgress.textContent = "3/3";
+  quizResult.classList.add("success");
+  quizResult.textContent = "Nice work. You are ready to start scripting in Roblox Studio.";
+
+  quizButtons.forEach((button) => {
+    button.disabled = true;
+    button.classList.remove("correct", "wrong");
+  });
+}
+
+if (quizButtons.length > 0) {
+  renderQuizQuestion();
+
+  quizButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const quiz = luaQuestions[currentQuizIndex];
+      const selectedAnswer = button.textContent;
+
+      quizButtons.forEach((option) => {
+        option.classList.remove("correct", "wrong");
+      });
+
+      if (selectedAnswer === quiz.answer && quizResult) {
+        button.classList.add("correct");
+        quizResult.textContent = quiz.success;
+        quizButtons.forEach((option) => {
+          option.disabled = true;
+        });
+
+        setTimeout(() => {
+          currentQuizIndex += 1;
+
+          if (currentQuizIndex >= luaQuestions.length) {
+            finishQuiz();
+          } else {
+            renderQuizQuestion();
+          }
+        }, 900);
+      } else if (quizResult) {
+        button.classList.add("wrong");
+        quizResult.textContent = quiz.hint;
+      }
+    });
+  });
+}
 
 if (ideaButton && ideaOutput) {
   ideaButton.addEventListener("click", () => {

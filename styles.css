@@ -674,6 +674,22 @@ pre {
   padding: 26px;
 }
 
+.quiz-panel h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+#quizProgress {
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: rgba(255, 211, 90, 0.14);
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
 .quiz-options {
   display: grid;
   gap: 10px;
@@ -707,10 +723,19 @@ pre {
   border-color: #ff7777;
 }
 
+.quiz-options button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
 .quiz-result {
   min-height: 28px;
   margin: 18px 0 0;
   font-weight: 900;
+}
+
+.quiz-result.success {
+  color: var(--mint);
 }
 
 .rewards-grid {
