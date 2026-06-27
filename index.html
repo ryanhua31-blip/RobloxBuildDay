@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roblox Build Day</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Roblox Build Day home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Build Day</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#what">What</a>
+        <a href="#works">How</a>
+        <a href="#lua">Lua</a>
+        <a href="#rewards">Rewards</a>
+        <a class="nav-cta" href="#signup">Sign Up</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Online Roblox Studio Hackathon</p>
+          <h1 id="hero-title">Roblox Build Day</h1>
+          <p class="hero-text">
+            Stop only playing games. Start building them. Learn Lua, design your first Roblox
+            experience, and launch a project that could earn Robux.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#signup">Reserve a Spot</a>
+            <a class="button secondary" href="#lua">Try Lua</a>
+          </div>
+          <dl class="hero-stats" aria-label="Build Day highlights">
+            <div>
+              <dt>1 day</dt>
+              <dd>guided build sprint</dd>
+            </div>
+            <div>
+              <dt>Lua</dt>
+              <dd>coding basics</dd>
+            </div>
+            <div>
+              <dt>Robux</dt>
+              <dd>creator goals</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual" aria-label="Animated Roblox Studio building scene">
+          <canvas id="buildCanvas" width="720" height="520"></canvas>
+          <div class="studio-panel panel-left">
+            <span class="panel-title">Explorer</span>
+            <span>Workspace</span>
+            <span>StarterGui</span>
+            <span>Script</span>
+          </div>
+          <div class="studio-panel panel-right">
+            <span class="panel-title">Lua</span>
+            <code>coins += 10</code>
+            <code>spawn()</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band light" id="what" aria-labelledby="what-title">
+        <div class="section-inner split">
+          <div>
+            <p class="eyebrow">What is Build Day?</p>
+            <h2 id="what-title">A friendly jump from player to creator.</h2>
+          </div>
+          <p>
+            Build Day is an online event where Roblox players learn how games are made inside
+            Roblox Studio. Mentors guide participants through planning, building, scripting, testing,
+            and publishing a small playable experience.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="works" aria-labelledby="works-title">
+        <div class="section-heading">
+          <p class="eyebrow">How it works</p>
+          <h2 id="works-title">Four steps to your first playable game.</h2>
+        </div>
+
+        <div class="steps">
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <h3>Pick a game idea</h3>
+            <p>Choose an obby, tycoon, simulator, roleplay map, or a totally new mini-game.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <h3>Build the world</h3>
+            <p>Use parts, terrain, colors, materials, and lighting to make your game feel real.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <h3>Code with Lua</h3>
+            <p>Write scripts for coins, checkpoints, doors, timers, enemies, and power-ups.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">04</span>
+            <h3>Playtest and share</h3>
+            <p>Invite friends, fix bugs, publish your experience, and keep improving it.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section band dark" id="lua" aria-labelledby="lua-title">
+        <div class="section-heading">
+          <p class="eyebrow">Learn Lua</p>
+          <h2 id="lua-title">Code that makes your game react.</h2>
+        </div>
+
+        <div class="lua-lab">
+          <div class="code-window" aria-label="Example Lua code">
+            <div class="window-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <pre><code>local coins = 0
+
+script.Parent.Touched:Connect(function(player)
+  coins = coins + 10
+  print("You earned Robux energy!")
+end)</code></pre>
+          </div>
+
+          <div class="quiz-panel">
+            <h3>Quick Lua Check</h3>
+            <p id="quizQuestion">Which word creates a variable in Lua?</p>
+            <div class="quiz-options" role="group" aria-labelledby="quizQuestion">
+              <button type="button" data-answer="wrong">make</button>
+              <button type="button" data-answer="correct">local</button>
+              <button type="button" data-answer="wrong">spawn</button>
+            </div>
+            <p class="quiz-result" id="quizResult" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rewards" aria-labelledby="rewards-title">
+        <div class="section-heading">
+          <p class="eyebrow">Why join?</p>
+          <h2 id="rewards-title">Playing is fun. Creating can pay off.</h2>
+        </div>
+
+        <div class="rewards-grid">
+          <article>
+            <h3>Earn creator skills</h3>
+            <p>Learn the basics of building, scripting, testing, and improving a Roblox game.</p>
+          </article>
+          <article>
+            <h3>Make something real</h3>
+            <p>Walk away with a playable prototype you can keep editing after the event.</p>
+          </article>
+          <article>
+            <h3>Robux motivation</h3>
+            <p>Discover how strong games, updates, and player feedback can support earning goals.</p>
+          </article>
+        </div>
+
+        <div class="idea-tool" aria-labelledby="idea-title">
+          <div>
+            <p class="eyebrow">Need an idea?</p>
+            <h3 id="idea-title">Generate a starter game concept.</h3>
+          </div>
+          <button class="button secondary" id="ideaButton" type="button">New Idea</button>
+          <p id="ideaOutput">A lava obby where every checkpoint unlocks a new speed boost.</p>
+        </div>
+      </section>
+
+      <section class="section band red" id="signup" aria-labelledby="signup-title">
+        <div class="signup-layout">
+          <div>
+            <p class="eyebrow">Sign up</p>
+            <h2 id="signup-title">Save your Build Day spot.</h2>
+            <p>
+              Join live workshops, complete creator missions, and meet other players learning to
+              build their own Roblox experiences.
+            </p>
+          </div>
+
+          <form class="signup-form" id="signupForm" novalidate>
+            <label>
+              Builder name
+              <input id="builderName" name="builderName" type="text" placeholder="PixelBuilder42" required />
+            </label>
+            <label>
+              Skill level
+              <select id="skillLevel" name="skillLevel" required>
+                <option value="">Choose one</option>
+                <option>New to Roblox Studio</option>
+                <option>I have built before</option>
+                <option>I know some Lua</option>
+              </select>
+            </label>
+            <label>
+              Game idea
+              <textarea id="gameIdea" name="gameIdea" rows="4" placeholder="I want to build..." required></textarea>
+            </label>
+            <button class="button primary" type="submit">Join Build Day</button>
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Roblox Build Day is a concept promotional event site for learning Roblox Studio and Lua.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
