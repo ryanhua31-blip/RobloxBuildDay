@@ -29,11 +29,11 @@ const luaQuestions = [
     hint: "Not quite. Try local."
   },
   {
-    question: "Which symbol means add in Lua?",
-    options: ["+", "=", ":"],
-    answer: "+",
-    success: "Correct. The + symbol adds numbers together.",
-    hint: "Not quite. Look for the symbol that adds numbers."
+    question: "In the sample script, what does Touched react to?",
+    options: ["A player hitting the part", "A timer reaching zero", "A new map loading"],
+    answer: "A player hitting the part",
+    success: "Correct. Touched runs when something touches that part.",
+    hint: "Not quite. Touched is about contact with the part."
   },
   {
     question: "Which command prints a message in the Output window?",
